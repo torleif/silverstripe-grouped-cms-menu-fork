@@ -1,51 +1,162 @@
-.cms-menu__list li a .toggle-children .toggle-children-icon {
-  background-image: none !important;
-  top: 35% !important;
+.cms-menu .toggle-children {
+	display: inline-block;
+	float: right;
+	width: 20px;
+	height: 100%;
+	cursor: pointer;
+	padding-top: 17px;
+}
+
+.cms-menu.toggle-children-icon {
+	background-image: none;
+	border-color: darken(#ccdce6, 25%);
+	border-style: solid;
+	border-width: 0 1px 1px 0;
+	width: 8px;
+	height: 8px;
+	position: absolute;
+	margin-top: 3px;
+	right: 8px;
+	z-index: 2;
+	transform: rotate(-45deg);
+	display: none;
+}
+
+.cms-menu.opened .toggle-children-icon {
+	margin-top: 1px;
+}
+
+
+.cms-menu__list li.children ul li a {
+	font-size: 12px;
+	line-height: 18px;
+	height: 18px;
+	padding-top: 11px;
+	padding-bottom: 11px;
+	color: rgb(86.4147727273,107.0511363636,140.5852272727);
+	background: hsl(202.1052631579,32.2033898305%,93.431372549%);
+}
+
+.cms-menu__list li.children.current > a {
+	background: transparent;
+}
+
+.cms-menu__list li.children.opened .current a {
+	background: #d8e4eb;
 }
 
 .cms-menu__list li ul.group {
-  margin: 0 0 0 15px;
-  padding: 0;
+	margin: 0 0 0 15px;
+	padding: 0;
 }
 
 .cms-menu__list li ul.group,
 .cms-menu__list li ul.group li {
-  list-style: none;
+	list-style: none;
 }
 
 .cms-menu__list li ul.group li a {
-  min-height: 35px;
+	min-height: 35px;
 }
 
 .cms-menu__list li ul.group li a .text {
-  padding-left: 8px;
+	padding-left: 8px;
 }
 
 .cms-menu__list li a .toggle-children-icon,
 .cms-menu__list li a .toggle-children .toggle-children-icon {
-  background-image: none !important;
-  top: 35% !important;
+	background-image: none !important;
+	top: 35% !important;
 }
 
-.cms-menu__list li ul.group li {
-  height: 0px;
+.cms-menu__list .child-flyout-indicator {
+	display: none !important;
 }
 
-.cms-menu__list li:hover ul.group li,
-.cms-menu__list li.opened ul.group li {
-  min-height: 35px;
-  height: unset;
+.cms-menu__list li.children > a > .text {
+	margin-right: 34px;
 }
 
-.cms-menu__list li.opened ul.group li a {
-  background: none;
-}
-.cms-menu__list li.opened ul.group li:hover,
-.cms-menu__list li.opened ul.group li.current {
-  background: #d8e4eb;
+.cms-menu__list li.children.current > a:hover,
+.cms-menu__list li.children.opened a:hover {
+	background-color: #d8e4eb;
 }
 
-.cms-menu__list li{
-  background: #d8e4eb;
-  background: #005a93;
+.cms-menu__list li.children a .toggle-children {
+	inset: 0;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	padding: 0;
+}
+
+.cms-menu__list li.children a .toggle-children .toggle-children-icon {
+	display: none;
+}
+
+
+.cms-menu__list li.children a .toggle-children .toggle-children-icon {
+	font-family: silverstripe !important;
+	font-style: normal !important;
+	font-weight: 400 !important;
+	font-variant: normal !important;
+	text-transform: none !important;
+	speak: none;
+	line-height: 26px;
+	-webkit-font-smoothing: antialiased;
+	position: absolute;
+	top: 50% !important;
+	right: 8px;
+	width: 26px;
+	height: 26px;
+	border-radius: 2px;
+	margin-top: -1px;
+	padding-top: 0;
+	font-size: 17px;
+	text-align: center;
+	line-height: 26px;
+	display: block;
+	transform: translateY(-50%);
+}
+
+.cms-menu__list li.children a .toggle-children .toggle-children-icon:after {
+	content: '(';
+}
+
+
+.cms-menu__list li.children a .toggle-children .toggle-children-icon:hover {
+	background: rgba(85, 137, 167, 0.15);
+}
+
+.cms-menu__list li.children a .toggle-children.opened .toggle-children-icon:after {
+	content: '*';
+}
+
+.cms-menu__list li.children ul.collapsed-flyout {
+	margin-top: -52px;
+}
+
+.cms-menu__list.collapsed .toggle-children {
+	display: none !important;
+}
+
+.cms-menu__list.collapsed .opened .child-flyout-indicator {
+	display: none !important;
+}
+
+.cms-menu__list.collapsed .opened ul.collapsed-flyout li.clone {
+	display: none !important;
+}
+
+.cms-menu__list.collapsed .opened ul.collapsed-flyout li a {
+	padding-right: 8px;
+	padding-left: 8px;
+}
+
+.cms-menu__list .menu__icon {
+	/*left: 13px;*/
+}
+
+.cms-menu__list span.text {
+	margin-left: 23px;
 }

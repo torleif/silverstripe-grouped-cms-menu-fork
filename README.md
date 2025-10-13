@@ -1,3 +1,7 @@
+# Forked
+
+This a fork of https://github.com/symbiote/silverstripe-grouped-cms-menu for use by Bigfork while waiting for SS6 support to be merged.
+
 # SilverStripe Grouped CMS Menu
 
 This module allows you to group CMS menu items into nested lists which expand when hovered over. This is useful when 

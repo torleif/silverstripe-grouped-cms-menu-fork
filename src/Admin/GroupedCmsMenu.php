@@ -3,22 +3,22 @@
 namespace Symbiote\GroupedCmsMenu\Admin;
 
 use SilverStripe\Admin\LeftAndMain;
-use SilverStripe\Admin\LeftAndMainExtension;
 use SilverStripe\Core\Convert;
+use SilverStripe\Core\Extension;
 use SilverStripe\View\Requirements;
-use SilverStripe\ORM\ArrayList;
-use SilverStripe\ORM\GroupedList;
-use SilverStripe\View\ArrayData;
+use SilverStripe\Model\List\ArrayList;
+use SilverStripe\Model\List\GroupedList;
+use SilverStripe\Model\ArrayData;
 use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\ORM\FieldType\DBText;
-use SilverStripe\ORM\SS_List;
+use SilverStripe\Model\List\SS_List;
 
 /**
  * Decorates {@link LeftAndMain} to provide a grouped/nested CMS menu.
  *
  * @package grouped-cms-menu
  */
-class GroupedCmsMenu extends LeftAndMainExtension
+class GroupedCmsMenu extends Extension
 {
 
     /**
@@ -33,18 +33,6 @@ class GroupedCmsMenu extends LeftAndMainExtension
      * @var boolean
      */
     private static $menu_groups_alphabetical_sorting = false;
-
-    /**
-     * Require the CSS which we need for the menu.
-     *
-     * @return void
-     */
-    public function init()
-    {
-        parent::init();
-
-        Requirements::css('symbiote/silverstripe-grouped-cms-menu:client/dist/css/GroupedCmsMenu.css');
-    }
 
     /**
      * @return ArrayList
@@ -113,6 +101,12 @@ class GroupedCmsMenu extends LeftAndMainExtension
                     $iconClass = $this->getIcon($group, $code);
                 }
 
+                $filteredChildren = $this->filterChildren($children);
+                // A single child should behave like a normal menu button, not a dropdown group.
+                if ($filteredChildren->count() <= 1) {
+                    $filteredChildren = null;
+                }
+
                 $result->push(ArrayData::create([
                     'Title'       => $this->getTitle($group, $code),
                     'IconClass'   => $iconClass,
@@ -120,7 +114,7 @@ class GroupedCmsMenu extends LeftAndMainExtension
                     'Code'        => DBField::create_field(DBText::class, $code),
                     'Link'        => $children->first()->Link,
                     'LinkingMode' => $active ? 'current' : 'link',
-                    'Children'    => $this->filterChildren($children),
+                    'Children'    => $filteredChildren,
                 ]));
             } else {
                 $result->push($children->first());

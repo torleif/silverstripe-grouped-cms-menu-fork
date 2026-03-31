@@ -1,5 +1,5 @@
 {
-    "name": "bigfork/silverstripe-grouped-cms-menu-fork",
+    "name": "torleif/silverstripe-grouped-cms-menu-fork",
     "description": "Allows you to group CMS menu items.",
     "type": "silverstripe-vendormodule",
     "homepage": "https://github.com/symbiote/silverstripe-grouped-cms-menu",

@@ -101,6 +101,12 @@ class GroupedCmsMenu extends Extension
                     $iconClass = $this->getIcon($group, $code);
                 }
 
+                $filteredChildren = $this->filterChildren($children);
+                // A single child should behave like a normal menu button, not a dropdown group.
+                if ($filteredChildren->count() <= 1) {
+                    $filteredChildren = null;
+                }
+
                 $result->push(ArrayData::create([
                     'Title'       => $this->getTitle($group, $code),
                     'IconClass'   => $iconClass,
@@ -108,7 +114,7 @@ class GroupedCmsMenu extends Extension
                     'Code'        => DBField::create_field(DBText::class, $code),
                     'Link'        => $children->first()->Link,
                     'LinkingMode' => $active ? 'current' : 'link',
-                    'Children'    => $this->filterChildren($children),
+                    'Children'    => $filteredChildren,
                 ]));
             } else {
                 $result->push($children->first());

@@ -160,3 +160,6 @@
 .cms-menu__list span.text {
 	margin-left: 23px;
 }
+.cms-menu {
+    width: 18.4rem !important;
+}

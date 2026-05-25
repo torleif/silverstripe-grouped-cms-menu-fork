@@ -120,7 +120,7 @@
 }
 
 .cms-menu__list li.children a .toggle-children .toggle-children-icon:after {
-	content: '(';
+	content: '8';
 }
 
 
@@ -129,7 +129,7 @@
 }
 
 .cms-menu__list li.children a .toggle-children.opened .toggle-children-icon:after {
-	content: '*';
+	content: '6';
 }
 
 .cms-menu__list li.children ul.collapsed-flyout {
